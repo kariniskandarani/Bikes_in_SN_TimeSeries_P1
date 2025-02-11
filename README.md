@@ -1,20 +1,63 @@
-# Bike Rides in San Francisco 🚴‍♂️📈
+# **Bike Rides in San Francisco 🚴‍♂️ (Time Series Analysis)** 
+### **Table of Contents**
+- [**Bike Rides in San Francisco 🚴‍♂️ (Time Series Analysis)**](#bike-rides-in-san-francisco-️-time-series-analysis)
+    - [**Table of Contents**](#table-of-contents)
+  - [**Jupyter Notebook Preview**](#jupyter-notebook-preview)
+  - [**Objective**](#objective)
+  - [**Case Study**](#case-study)
+  - [**Motivation:**](#motivation)
+  - [**Data Acquisition**](#data-acquisition)
+  - [**Tech Stack \& Tools**](#tech-stack--tools)
+  - [How to Run](#how-to-run)
+  - [**Key Deliverables**](#key-deliverables)
+  - [**Data Description**](#data-description)
+  - [**Exploratory Data Analysis**](#exploratory-data-analysis)
+  - [**Time Series Decomposition Analysis**](#time-series-decomposition-analysis)
+  - [**Stationarity Analysis**](#stationarity-analysis)
+      - [**Ljung-Box Test Results** (Performed after observing ACF and PACF plots)**:**](#ljung-box-test-results-performed-after-observing-acf-and-pacf-plots)
+      - [**Augmented Dickey-Fuller (ADF) Test Results** (Performed after observing ACF and PACF plots)**:**](#augmented-dickey-fuller-adf-test-results-performed-after-observing-acf-and-pacf-plots)
+      - [**Another way to assess stationarity:**](#another-way-to-assess-stationarity)
+      - [**To make time series stationary:**](#to-make-time-series-stationary)
+  - [**Autocorrelation and Partial Autocorrelation Analysis**](#autocorrelation-and-partial-autocorrelation-analysis)
+  - [**Baseline Models**](#baseline-models)
+      - [**SMA Models  Evaluations**](#sma-models--evaluations)
+  - [Statistical Model Selection](#statistical-model-selection)
+  - [**Results \& Findings**](#results--findings)
+  - [**Key Takeaways**](#key-takeaways)
+  - [**Key Terms and Definitions**](#key-terms-and-definitions)
 
-**Case Study**: Analyzing & Forecasting the number of bike rides in San Francisco  
-**Objective** : The goal is to dive deep into time-series signals, analyze it and determine the best predictive model.
+
+
+##  **Jupyter Notebook Preview**  
+[Notebook Code](https://raw.githubusercontent.com/kariniskandarani/Bikes_in_SN_TimeSeries_P1/refs/heads/master/TS_P1_Bike_Rides_in_San_Francisco.ipynb)
+
+
+## **Objective** 
+ The goal is to dive deep into time-series signals, analyze it and determine the best predictive model.
+
+## **Case Study** 
+
+Analyzing & Forecasting the number of bike rides in San Francisco  
 
 **The case study is divided into two parts:**
 
-* **Part A:** Use time-series data of the number of bike rides in San Francisco and analyze it to better understand it and choose one of the statistical models to predict future values.  
-* **Part B:** Prepare the same data and structure it in order to train an RNN to predict the number of bike rides for the next 7 days.
+* **Part A:** Use time-series data of the number of bike rides in San Francisco and **analyze** it to better understand it and choose one of the **statistical models** to predict future values.  
+  
+* **Part B:** Prepare the same data and structure it in order to train an **RNN** to predict the *number of bike rides for the next 7 days.*
 
-**Motivation:** This project marks my initial exploration into time series analysis and forecasting. It serves as a crucial learning opportunity to grasp the foundational concepts and techniques essential for tackling time series problems. Additionally, it holds significant importance in building my expertise in this domain.
+**Note**: Part B will be present in another repository.
 
-Data Acquisition
 
-**Data Source**: The data was provided by ZAKA. 
+## **Motivation:** 
+This project marks my initial exploration into time series analysis and forecasting. It serves as a crucial learning opportunity to grasp the foundational concepts and techniques essential for tackling time series problems. Additionally, it holds significant importance in building my expertise in this domain.
 
-You can access the data from the following link :data
+##  **Data Acquisition**
+
+🔹 **Data Source**: The data was provided by ZAKA. 
+
+🔹 **Dataset**: [Download CSV File](https://github.com/kariniskandarani/your-repo/blob/main/data/BikeRidesaggregated.csv)
+
+🔹 **Techniques:** Exploratory Data Analysis, Time Series Analysis, Stationary Analysis, Autocorrelation Analysis and more. 
 
 ## **Tech Stack & Tools**
 
@@ -24,15 +67,26 @@ You can access the data from the following link :data
 
 🔹 **Scikit-learn**: Used for computing **evaluation metrics** to assess model performance.
 
-## Key Deliverables
+## How to Run 
 
-### **Part A: Exploratory Analysis ,Time Series Decomposition, and Statistical Modeling**
+
+Run the following commands to set up the project on cmd:
+
+```sh
+git clone git@github.com:yourusername/yourrepo.git
+cd yourrepo
+pip install -r requirements.txt
+```
+
+## **Key Deliverables**
+
+**Part A**: Exploratory Analysis ,Time Series Decomposition, and Statistical Modeling
 
 1. **Data Preprocessing**  
    * Load and clean the dataset (handle missing values, remove duplicates, etc.).  
    * Ensure the dataset is in a time series format (e.g., datetime index).  
    * Resample the data if necessary (e.g., convert to daily or hourly frequency).  
-2. **Exploratory Data Analysis (EDA)**  
+2.  **Exploratory Data Analysis (EDA)**  
    * Visualize the time series data (e.g., line plots, rolling statistics).  
 3. **Time Series Decomposition**  
    * Decompose the time series into its components:  
@@ -43,42 +97,42 @@ You can access the data from the following link :data
    * Visualize the decomposed components to understand their behavior.  
 4. **Stationarity Analysis**  
    * Perform statistical tests (e.g., Augmented Dickey-Fuller test) to check for stationarity.  
-   * If the data is non-stationary, apply transformations (e.g., differencing, log transformation).  
+   * If the data is **non-stationary**, apply **transformations** (e.g., *differencing*, *square root transformation*).  
 5. **Autocorrelation and Partial Autocorrelation Analysis**  
    * Plot the **Autocorrelation Function (ACF)** and **Partial Autocorrelation Function (PACF)**.  
    * Interpret the plots to identify:  
-     * Significant lags for modeling (e.g., ARIMA parameters).  
-     * Seasonality patterns (e.g., spikes at specific intervals).  
+     * Significant lags for modeling (e.g., *ARIMA parameters*).  
+     * Seasonality patterns (ex: *spikes at specific intervals*).  
 6.  **Baseline Models**  
    * Implement simple baseline models to establish a performance benchmark:  
      * **Moving Average**: Predict using the average of the last *n* observations.
 
-   **7\. Statistical Model Selection**
+   **7. Statistical Model Selection**
 
    * Based on the analysis from Part A, select appropriate statistical models:  
      * **ARIMA (AutoRegressive Integrated Moving Average)**: For stationary data.  
      * **SARIMA (Seasonal ARIMA)**: For data with seasonality.
 
-## Data Description: 
+## **Data Description**
 
 * date: YYYY-MM-DD   
 * bike\_numbers: refer to number of bikes in that date
 
 Features: 
 
-* bike\_numbers
+* bike_numbers
 
 
 After the date is set as an index
 
 - Dataset has 552 rows (observations) and 1 column
 
-## Exploratory Data Analysis
+## **Exploratory Data Analysis**
 
 ![](./Images/image1.png)  
 Based on the above plot, the number of bike rides is **maximum** during **July** and **October 2018** and **minimum** during **January 2018**.
 
-## Time Series Decomposition Analysis
+## **Time Series Decomposition Analysis**
 
 ![](./Images/image2.png)  
 
@@ -86,7 +140,7 @@ Based on the above plot, the number of bike rides is **maximum** during **July**
 * In the **seasonality** component, we observe repeated patterns on a **weekly** basis. The frequent repetitions suggest a shorter periodicity than monthly indicating a seasonal effect tied to weekly cycles.  
 * In the **residual** component, noise and short-term fluctuations are not systematic and unpredictable.
 
-## Stationarity Analysis
+## **Stationarity Analysis**
 
 Performed Statistical tests like:
 
@@ -118,7 +172,7 @@ Performed Statistical tests like:
 ![](./Images/image4.png)  
 
 
-## Autocorrelation and Partial Autocorrelation Analysis
+## **Autocorrelation and Partial Autocorrelation Analysis**
 
 **ACF Plots:**  
 ![](./Images/image5.png)  
@@ -147,7 +201,7 @@ ACF and PACF Plots after Applying Differencing to the original dataset:![]![](./
 ![](./Images/image9.png)  
 
 ![](./Images/image13.png) 
-## Baseline Models
+## **Baseline Models**
 
 Applied **simple moving average filter** with **window size** of **20\.**   
 ![](./Images/image10.png)  
@@ -169,7 +223,7 @@ Applied a **simple moving average** to the whole dataset with **window size** of
 ![](./Images/image12.png)  
 The above plot shows the training and testing sets along with the **Simple Moving Average (SMA) forecast** applied to the dataset. The SMA method effectively smooths the data, reducing short-term fluctuations and capturing the general trend. However, due to its lagging nature, it may struggle to accurately predict sharp changes or seasonal variations in the data.
 
-#### SMA Models  Evaluations
+#### **SMA Models  Evaluations**
 
 * The dataset with an SMA window size of 2 has an RMSE of 855.730.  
 * The dataset with an SMA window size of 20 has an RMSE of 1804.657.
@@ -177,7 +231,7 @@ The above plot shows the training and testing sets along with the **Simple Movin
 
 Based on the RMSE metric, the moving average with a window size of 2 provides better predictions than the one with a window size of 20, as it has a lower RMSE.
 
-Statistical Model Selection
+## Statistical Model Selection
 
 Tried several models for testing:
 
@@ -221,13 +275,16 @@ Based on the RMSE and the above plot, I deduced that moving average model is not
 - Visualizing test **actual** values against **predictions**:
     ![](./Images/image18.png) 
 
-  
+  <hr>
+
 
 - **SARIMAX** of order(**20,2,7**) **p=20** (**AR**), **d= 2** which is **differencing** by **2** and **q=7** (MA)   
 - Model evaluation **RMSE**: **8.463**  
 - Visualizing test **actual** values against **predictions.**  
   ![](./Images/image19.png)   
-    
+
+
+   <hr> 
     
 - **SARIMAX** model with 2 options :   
   - If it is **not seasonal** then order of (**1,1,2**)  
@@ -240,7 +297,39 @@ Based on the RMSE and the above plot, I deduced that moving average model is not
 
  It is evident in the above plot that the residuals and the gaps decreased between some actual values and predicted values.
 
-## Results & Findings
+## **Results & Findings**
+I experimented with several time series models to analyze and forecast bike rides in San Francisco. Below are the models tested along with their RMSE (Root Mean Square Error) scores:
+
+1. **AR Model (AutoRegressive)**
+Order: (20) → Chosen based on PACF plot
+Model Evaluation: RMSE = 8.757
+
+2. **MA Model (Moving Average)**
+Order: (**7**) → Chosen based on ACF plot
+Model Evaluation: **RMSE** = 12.573
+
+3. **SARIMAX (ARMA Model - Order: 20,0,7)**
+**Order**: **(20,0,7)** → Selected using AR and MA analysis
+Model Evaluation: **RMSE = 8.239**
+
+4. **SARIMAX** Model with Seasonal Considerations
+If **Not Seasonal**: **Order = (1,1,2)**
+If **Seasonal**: **Order = (20,1,1,7)** → Suggests weekly seasonality
+Model Evaluation: **RMSE = 7.418**
+5. **SARIMAX Model** (**Differencing Order: 2**)
+**Order: (20,2,7)** → **p=20 (AR), d=2 (Differencing), q=7 (MA)**
+Model Evaluation: **RMSE = 8.463**
+6. **SARIMAX Model** (Alternative Seasonal Considerations)
+If **Not Seasonal: Order = (1,1,2)**
+If **Seasonal: Order = (2,1,2,7)** → Suggests weekly seasonality
+Model Evaluation:** RMSE = 7.067**
+
+## **Key Takeaways**
+The best-performing model based on **RMSE** is **SARIMAX (2,1,2,7)** with **RMSE = 7.067**, confirming the presence of weekly seasonality in bike ride data.
+Differencing (**d=1 or d=2**) helps in making the series stationary, improving forecast accuracy.
+The AR and MA orders play a crucial role in capturing underlying patterns in time series data.
+
+
 
  I tried all statistical models yet none of these models was good at simulating the behavior of this dataset.This may be caused by several reasons:
 
@@ -248,7 +337,7 @@ Based on the RMSE and the above plot, I deduced that moving average model is not
 
 The least **RMSE** is **7.067 of order** (**2,1,2,7**) for the  **seasonal and nonseasonal order  (1,1,2)**.
 
-## Key Terms and Definitions:
+## **Key Terms and Definitions**
 
 For Time series analysis, we **decompose** the time series into several components:
 
