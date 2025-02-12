@@ -29,7 +29,7 @@
 
 
 ##  **Jupyter Notebook Preview**  
-[Notebook Code](https://raw.githubusercontent.com/kariniskandarani/Bikes_in_SN_TimeSeries_P1/refs/heads/master/TS_P1_Bike_Rides_in_San_Francisco.ipynb)
+[Notebook Code](https://nbviewer.org/github/kariniskandarani/Bikes_in_SN_TimeSeries_P1/blob/master/TS_P1_Bike_Rides_in_San_Francisco.ipynb)
 
 
 ## **Objective** 
@@ -55,7 +55,9 @@ This project marks my initial exploration into time series analysis and forecast
 
 🔹 **Data Source**: The data was provided by ZAKA. 
 
-🔹 **Dataset**: [Download CSV File](https://github.com/kariniskandarani/your-repo/blob/main/data/BikeRidesaggregated.csv)
+🔹 **Dataset**: 
+<a href="https://raw.githubusercontent.com/kariniskandarani/Bikes_in_SN_TimeSeries_P1/master/Bike%20Rides%20aggregated.csv" download> Download CSV</a>
+
 
 🔹 **Techniques:** Exploratory Data Analysis, Time Series Analysis, Stationary Analysis, Autocorrelation Analysis and more. 
 
